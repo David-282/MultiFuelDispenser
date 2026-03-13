@@ -35,3 +35,13 @@ class Fuel:
             raise ValueError("Quantity cannot be less than 1")
 
         self.__quantity = quantity
+
+
+
+
+    def to_dict(self):
+             return {
+                 "fuel name": self.get_fuel_name(),
+                 "price per litre": self.get_price_per_liter(),
+                "available litres": self.get_quantity()
+           }

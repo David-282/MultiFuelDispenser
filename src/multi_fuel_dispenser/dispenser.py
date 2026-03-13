@@ -1,10 +1,13 @@
+from datetime import datetime
+
 from multi_fuel_dispenser.fuel import Fuel
 
 
 class Dispenser:
+    date_time = datetime.now()
+    formatted_date = date_time.strftime("%d/%m/%Y %H:%M:%S")
     def __init__(self):
         self.fuels = {}
-        self.transactions = []
 
 
     def add_fuel(self, fuel_name:str, fuel:Fuel):
@@ -13,6 +16,10 @@ class Dispenser:
         if fuel_name in self.fuels:
             raise ValueError("Fuel already exists.")
         self.fuels[fuel_name] = fuel
+
+        with open("Fuel Type.txt","a") as file:
+            file.write(f"{fuel_name}:{fuel.to_dict()}\n")
+
 
     def get_fuel(self,fuel_name:str):
         fuel_name = self.__validate_fuel(fuel_name)
@@ -29,11 +36,13 @@ class Dispenser:
         fuel.set_price_per_liter(price)
 
     def add_transaction(self, transaction):
-        self.transactions.append(transaction)
+        with open("transaction.txt","a") as file:
+            file.write(transaction+"\n")
+
+
 
     def get_all_fuels(self):
         return list(self.fuels.keys())
-
 
     def restock_fuel(self, fuel_name:str, liter:float):
 
@@ -45,7 +54,6 @@ class Dispenser:
 
         new_stock = fuel.get_quantity() + liter
         fuel.set_quantity(new_stock)
-        # self.fuels[fuel_name].set_quantity(new_stock)
 
     def __validate_fuel(self, fuel_name: str):
         fuel_name = fuel_name.lower()

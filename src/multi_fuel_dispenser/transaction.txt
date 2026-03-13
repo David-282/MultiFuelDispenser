@@ -1,1 +1,11 @@
-Fuel Attendanttext file.Another day to test.
+ Transactions on the dispenser.
+
+Fuel Type: gas | Amount Bought: 100000.0, | Liters Bought: 2.5
+Fuel Type: gas | Amount Bought: 200000.0 | Liters Bought: 5.0
+Fuel Type: petrol | Amount Bought: 1600000.0 | Liters Bought: 1000.0
+Fuel Type: gas | Amount Bought: 10680.0 | Liters Bought: 12.0
+Fuel Type: gas | Amount Bought: 3156.0 | Liters Bought: 4.0 | Time & Date :12/03/2026 23:16:32
+Fuel Type: gas | Amount Bought: 5900.0 | Liters Bought: 12.93859649122807 | Time & Date :12/03/2026 23:23:21
+Fuel Type: gas | Amount Bought: 690.0 | Liters Bought: 2.0 | Time & Date :12/03/2026 23:24:33
+Fuel Type: gas | Amount Bought: 2280.0 | Liters Bought: 5.0 | Time & Date :13/03/2026 00:31:23
+Fuel Type: gas | Amount Bought: 1234.0 | Liters Bought: 22.035714285714285 | Time & Date :13/03/2026 00:34:21

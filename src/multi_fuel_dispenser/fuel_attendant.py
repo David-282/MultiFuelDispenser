@@ -1,3 +1,4 @@
+from datetime import datetime
 from multi_fuel_dispenser.dispenser import Dispenser
 from multi_fuel_dispenser.fuel import Fuel
 
@@ -26,8 +27,7 @@ class FuelAttendant:
         amount = liter *fuel.get_price_per_liter()
         remaining_quantity = fuel.get_quantity() - liter
         fuel.set_quantity(remaining_quantity)
-        transaction = f"Fuel Type: {fuel_name} Amount Bought: {amount} Liters Bought: {liter}"
-
+        transaction = f"Fuel Type: {fuel_name} | Amount Bought: {amount} | Liters Bought: {liter} | Time & Date :{self.__dispenser.formatted_date}"
         receipt = self.generate_receipt(fuel_name,amount,liter)
         self.__dispenser.add_transaction(transaction)
 
@@ -38,7 +38,8 @@ class FuelAttendant:
         liter_bought = amount / fuel.get_price_per_liter()
         remaining_quantity = fuel.get_quantity() - liter_bought
         fuel.set_quantity(remaining_quantity)
-        transaction = f"Fuel Type: {fuel_name}, Amount Bought: {amount}, Liters Bought: {liter_bought}"
+
+        transaction = f"Fuel Type: {fuel_name} | Amount Bought: {amount} | Liters Bought: {liter_bought} | Time & Date :{self.__dispenser.formatted_date}"
         receipt = self.generate_receipt(fuel_name,amount,liter_bought)
         self.__dispenser.add_transaction(transaction)
 
@@ -59,6 +60,7 @@ class FuelAttendant:
     def generate_receipt(self, fuel_name: str, amount: float, liters: float):
         receipt = (
             f"\n----- Fuel Receipt -----\n"
+            f"{self.__dispenser.formatted_date}\n"
             f"Fuel Type      : {fuel_name}\n"
             f"Amount Paid    : ₦{amount:.2f}\n"
             f"Liters Bought  : {liters:.2f} L\n"
@@ -73,4 +75,9 @@ class FuelAttendant:
 
 
     def get_all_transactions(self):
-        return self.__dispenser.transactions
+        transactions = []
+        with open("transaction.txt", "r") as file:
+            for history in file:
+                transactions.append(history.strip())
+        return transactions
+

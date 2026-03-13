@@ -1,8 +1,8 @@
 from multi_fuel_dispenser.dispenser import Dispenser
 from multi_fuel_dispenser.fuel_attendant import FuelAttendant
 
-# Initialize the Dispenser and FuelAttendant
 dispenser = Dispenser()
+# dispenser.update_transaction()
 print("OSHEY Filling Station, Yaba Branch")
 print("======== Staff Login =========")
 name = input("Hello Loyal Attendant, kindly enter your name: ")
